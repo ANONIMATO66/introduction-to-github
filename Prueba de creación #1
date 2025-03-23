@@ -1,0 +1,70 @@
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { TextInput, Button, Text, Card } from 'react-native-paper';
+
+export default function WithdrawScreen() {
+  const [address, setAddress] = useState('');
+  const [amount, setAmount] = useState('');
+
+  const handleWithdraw = () => {
+    // TODO: Implement withdrawal logic
+    alert('Withdrawal request submitted');
+  };
+
+  return (
+    <View style={styles.container}>
+      <Card style={styles.card}>
+        <Card.Content>
+          <Text style={styles.balance}>Available: 0.00 BEP20</Text>
+          <TextInput
+            label="BEP20 Wallet Address"
+            value={address}
+            onChangeText={setAddress}
+            style={styles.input}
+          />
+          <TextInput
+            label="Amount BEP20"
+            value={amount}
+            onChangeText={setAmount}
+            keyboardType="numeric"
+            style={styles.input}
+          />
+          <Text style={styles.notice}>
+            Minimum withdrawal: 0.001 BEP20
+          </Text>
+          <Button
+            mode="contained"
+            onPress={handleWithdraw}
+            style={styles.button}
+            disabled={!address || !amount}
+          >
+            Withdraw
+          </Button>
+        </Card.Content>
+      </Card>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 15,
+    backgroundColor: '#f5f5f5',
+  },
+  card: {
+    marginBottom: 15,
+  },
+  balance: {
+    fontSize: 20,
+    marginBottom: 20,
+  },
+  input: {
+    marginBottom: 15,
+  },
+  button: {
+    marginTop: 10,
+  },
+  notice: {
+    color: '#666',
+    marginBottom:
